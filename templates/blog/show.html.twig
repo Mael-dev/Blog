@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <button type="button" class="btn btn-info">
+            <a href="{{ path('blog_edit', { 'id' : dish.id }) }}"> Modifier un plat</a>
+    </button>
+    <article>
+        <h2> {{ dish.name }} </h2>
+        <div class="metadata"> Ecrit le {{ dish.createdAt | date('d/m/Y')}} à {{ dish.createdAt | date('H:i') }}
+        dans la catégorie {{ dish.category.title }}</div>
+        <div class="content">
+            <img src="{{ dish.image }}" alt="">
+            {{ dish.ingredient | raw }}
+        </div>
+    </article>
+
+    <section id="comments">
+
+        <h1> {{ dish.comments | length }} Commentaires :</h1>
+
+        {% for comment in dish.comments %}
+            <div class="comment">
+                <div class="row">
+                    <div class="col-3">
+                        {{ comment.author }} (<small> {{ comment.createdAt| date ('d/m/Y à H:i') }} </small>)
+                    </div>
+                    <div class="col">
+                        {{ comment.content | raw }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {{ form_start(commentForm) }}
+        {{ form_row(commentForm.author, {
+            'attr' : {
+                'placeholder' :  "Votre nom"
+            }
+        }) }}
+        {{ form_row(commentForm.content, {
+            'attr' : {
+                'placeholder' :  "Votre commentaire"
+            }
+        }) }}
+	
+	{% if  app.user %}
+        <button type="submit" class="btn btn-success"> Publier un commentaire</button>
+	{% else %}
+	<p> Vous ne pouvez pas laisser de commentaires si vous n'êtes pas connecter ! </p>
+	{% endif %}
+
+        {{ form_end(commentForm) }}
+    </section>
+{% endblock %}

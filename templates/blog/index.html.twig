@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+    <section class="dishes">
+
+        {% for dish in dishes %}
+            <dish>
+                <h2> {{ dish.name}}</h2>
+                <div class="metadata"> Ecrit le {{ dish.createdAt | date('d/m/Y')}} à {{ dish.createdAt | date('H:i')  }}</div>
+                <div class="content">
+                    <img src={{ dish.image }} alt="">
+                    {{  dish.ingredient | raw}}
+                    <a href="{{ path('blog_show', { 'id' : dish.id }) }}"class="btn btn-primary"> Lire la suite </a>
+                </div>
+            </dish>
+        {% endfor %}
+    </section>
+
+{% endblock %}

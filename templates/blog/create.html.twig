@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{%  form_theme formDish 'bootstrap_4_layout.html.twig' %}
+
+{%  block body %}
+    {%  if editMode %}
+        <h1> Modification d'un plat </h1>
+    {% else %}
+        <h1> Création d'un nouveau plat </h1>
+    {% endif %}
+
+
+    {{ form_start(formDish) }}
+
+    {{ form_row(formDish.name, {
+        'attr' : {
+            'placeholder': "Nom du plat"}
+    }) }}
+    {{ form_row(formDish.category) }}
+    {{ form_row(formDish.ingredient, {
+        'attr' : {
+            'placeholder': "Ingrédients du plat"}
+    }) }}
+    {{ form_row(formDish.image, {
+        'attr' : {
+            'placeholder': "URL de l'image"}
+    }) }}
+    <button type="submit" class="btn btn-success">
+        {%  if editMode %}
+            Enregistrer les modifications
+        {% else %}
+            Ajouter le nouveau plat
+        {% endif %}
+    </button>
+
+    {{ form_end(formDish) }}
+
+{%  endblock %}
