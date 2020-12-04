@@ -1,7 +1,8 @@
 # Logs (Symfony4)
 /var/log/*
 !var/log/.gitkeep
-/var/
+
+#opake
 .idea/
 
 # Parameters
@@ -10,7 +11,7 @@
 
 # Managed by Composer
 /app/bootstrap.php.cache
-/var/bootstrap.php.cache
+/var/
 /bin/*
 !bin/console
 !bin/symfony_requirements
@@ -36,6 +37,4 @@
 # Embedded web-server pid file
 /.web-server-pid
 
-# Cache computer
-/.idea/*
 
