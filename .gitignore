@@ -13,7 +13,7 @@
 !bin/console
 !bin/symfony_requirements
 /vendor/
-/var/
+/var/*
 
 # Assets and user uploads
 /web/bundles/
@@ -36,5 +36,5 @@
 /.web-server-pid
 
 # Cache computer
-/.idea
+/.idea/*
 
