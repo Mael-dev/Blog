@@ -1,9 +1,6 @@
-###> letseat ###
-.idea
-.vscode
-.DS_Store
-thumbnails.db
-###< letseat ###
+# opake
+.idea/
+
 # Parameters
 /app/config/parameters.yml
 /app/config/parameters.ini
