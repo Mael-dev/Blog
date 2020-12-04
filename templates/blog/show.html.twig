@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <button type="button" class="btn btn-info">
-            <a href="{{ path('blog_edit', { 'id' : dish.id }) }}"> Modifier un plat</a>
-    </button>
+    {% if  app.user %}
+        <button type="button" class="btn btn-info">
+                <a href="{{ path('blog_edit', { 'id' : dish.id }) }}"> Modifier un plat</a>
+        </button>
+    {%  endif %}
     <article>
         <h2> {{ dish.name }} </h2>
         <div class="metadata"> Ecrit le {{ dish.createdAt | date('d/m/Y')}} à {{ dish.createdAt | date('H:i') }}
