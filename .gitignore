@@ -1,6 +1,9 @@
-#opake
-.idea/
-
+###> letseat ###
+.idea
+.vscode
+.DS_Store
+thumbnails.db
+###< letseat ###
 # Parameters
 /app/config/parameters.yml
 /app/config/parameters.ini
