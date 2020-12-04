@@ -46,6 +46,11 @@ class User implements UserInterface {
      */
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,11 +92,38 @@ class User implements UserInterface {
         return $this;
     }
 
-    public function eraseCredentials(){}
-
     public function getRoles() {
-       return ['ROLE_USER'];
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
+
+    public function setRoles(array $roles): self {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    function addRole($role) {
+        $this->roles[] = $role;
+    }
+
+    public function hasRole($role)
+    {
+        return in_array(strtoupper($role), $this->getRoles(), true);
+    }
+
+    public function removeRole($role)
+    {
+        if (false !== $key = array_search(strtoupper($role), $this->roles, true)) {
+            unset($this->roles[$key]);
+            $this->roles = array_values($this->roles);
+        }
+        return $this;
+    }
+
+    public function eraseCredentials(){}
 
     public function getSalt() {}
 
