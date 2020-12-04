@@ -1,5 +1,6 @@
 # opake
-.idea/*
+.idea/Blog.iml
+.idea/php.xml
 
 # Parameters
 /app/config/parameters.yml
@@ -10,6 +11,8 @@
 /bin/*
 !bin/console
 !bin/symfony_requirements
+/var/cache/*
+/var/log/*
 /var/*
 /vendor/
 
