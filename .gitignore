@@ -1,7 +1,3 @@
-# Logs (Symfony4)
-/var/log/*
-!var/log/.gitkeep
-
 #opake
 .idea/
 
@@ -11,10 +7,10 @@
 
 # Managed by Composer
 /app/bootstrap.php.cache
-/var/
 /bin/*
 !bin/console
 !bin/symfony_requirements
+/var/
 /vendor/
 
 # Assets and user uploads
